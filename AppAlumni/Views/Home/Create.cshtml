@@ -1,0 +1,94 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model UsersAlumini
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ADO - Students and Alumni Sena</title>
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container-fluid">
+        <h1>Create an Inventory</h1>
+        <h2 class="alert-danger">@ViewBag.Result</h2>
+
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Usr_id"></label>
+                <input type="number" class="form-control" asp-for="Usr_id" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Usr_doc"></label>
+                <input type="text" class="form-control" asp-for="Usr_doc" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Usr_kind_doc"></label>
+                <input type="text" class="form-control" asp-for="Usr_kind_doc" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Usr_name"></label>
+                <input type="text" class="form-control" asp-for="Usr_name" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Usr_phonenum"></label>
+                <input type="text" class="form-control" asp-for="Usr_phonenum" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Usr_email"></label>
+                <input type="text" class="form-control" asp-for="Usr_email" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Usr_gender"></label>
+                <input type="text" class="form-control" asp-for="Usr_gender" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Usr_category"></label>
+                <input type="text" class="form-control" asp-for="Usr_category" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Usr_program"></label>
+                <input type="text" class="form-control" asp-for="Usr_program" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Usr_startdate"></label>
+                <input type="text" class="form-control" asp-for="Usr_startdate" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Usr_address"></label>
+                <input type="text" class="form-control" asp-for="Usr_address" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Usr_neighborhood"></label>
+                <input type="text" class="form-control" asp-for="Usr_neighborhood" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Usr_city"></label>
+                <input type="text" class="form-control" asp-for="Usr_city" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Usr_province"></label>
+                <input type="text" class="form-control" asp-for="Usr_province" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Usr_dateregistr"></label>
+                <input type="text" class="form-control" asp-for="Usr_dateregistr" />
+            </div>
+
+            <div class="text-center panel-body">
+                <button type="submit" class="btn btn-sm btn-primary">Create</button>
+            </div>
+        </form>
+    </div>
+
+    @*<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>*@
+</body>
+</html>
