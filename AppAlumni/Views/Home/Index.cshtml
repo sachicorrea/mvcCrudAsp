@@ -36,12 +36,13 @@
                     <th>Province</th>
                     <th>Date Added On</th>
                     <th>Update</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
                 @if (Model == null)
                 {
-                    <tr><td colspan="6" class="text-center">No Model Data</td></tr>
+                    <tr><td colspan="7" class="text-center">No Model Data</td></tr>
                 }
                 else
                 {
@@ -64,6 +65,11 @@
                             <td>@p.Usr_province</td>
                             <td>@string.Format("{0:dddd, dd MMMM yyyy}", p.Usr_dateregistr)</td>
                             <td><a asp-action="Update" asp-route-id="@p.Usr_id">Update</a></td>
+                            <td>
+                                <form asp-action="Delete" method="post" asp-route-id="@p.Usr_id">
+                                    <button>Delete</button>
+                                </form>
+                            </td>
                         </tr>
                     }
                 }

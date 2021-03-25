@@ -281,5 +281,23 @@ namespace AppAlumni.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string sql = $"Delete From AlumniDb Where Usr_id='{id}'";
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }
