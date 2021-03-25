@@ -75,7 +75,7 @@ namespace AppAlumni.Controllers
             string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string sql = "Insert Into AlumniDb (Usr_doc, Usr_kind_doc, Usr_name, Usr_phonenum, Usr_email, Usr_gender, Usr_category, Usr_program, Usr_startdate, Usr_address, Usr_neighborhood, Usr_city, Usr_province, Usr_dateregistr) Values (@Usr_doc, @Usr_kind_doc, @Usr_name, @Usr_phonenum, @Usr_email, @Usr_gender, @Usr_category, @Usr_program, @Usr_startdate, @Usr_address, @Usr_neighborhood, @Usr_city, @Usr_province, @Usr_dateregistr)";
+                string sql = "Insert Into AlumniDb (Usr_doc, Usr_kind_doc, Usr_name, Usr_phonenum, Usr_gender, Usr_category, Usr_program, Usr_startdate, Usr_address, Usr_neighborhood, Usr_city, Usr_province, Usr_dateregistr, Usr_email) Values (@Usr_doc, @Usr_kind_doc, @Usr_name, @Usr_phonenum, @Usr_gender, @Usr_category, @Usr_program, @Usr_startdate, @Usr_address, @Usr_neighborhood, @Usr_city, @Usr_province, @Usr_dateregistr, @Usr_email)";
 
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
