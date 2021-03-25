@@ -223,5 +223,63 @@ namespace AppAlumni.Controllers
             ViewBag.Result = "Success";
             return View();
         }
+
+        public IActionResult Update(int id)
+        {
+            string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
+
+            UsersAlumini usersalumini = new UsersAlumini();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string sql = $"Select * From AlumniDb Where Usr_id='{id}'";
+                SqlCommand command = new SqlCommand(sql, connection);
+
+                connection.Open();
+
+                using (SqlDataReader dataReader = command.ExecuteReader())
+                {
+                    while (dataReader.Read())
+                    {
+                        usersalumini.Usr_id = Convert.ToInt32(dataReader["Usr_id"]);
+                        usersalumini.Usr_doc = Convert.ToString(dataReader["Usr_doc"]);
+                        usersalumini.Usr_kind_doc = Convert.ToString(dataReader["Usr_kind_doc"]);
+                        usersalumini.Usr_name = Convert.ToString(dataReader["Usr_name"]);
+                        usersalumini.Usr_phonenum = Convert.ToString(dataReader["Usr_phonenum"]);
+                        usersalumini.Usr_gender = Convert.ToString(dataReader["Usr_gender"]);
+                        usersalumini.Usr_category = Convert.ToString(dataReader["Usr_category"]);
+                        usersalumini.Usr_program = Convert.ToString(dataReader["Usr_program"]);
+                        usersalumini.Usr_startdate = Convert.ToDateTime(dataReader["Usr_startdate"]);
+                        usersalumini.Usr_address = Convert.ToString(dataReader["Usr_address"]);
+                        usersalumini.Usr_neighborhood = Convert.ToString(dataReader["Usr_neighborhood"]);
+                        usersalumini.Usr_city = Convert.ToString(dataReader["Usr_city"]);
+                        usersalumini.Usr_province = Convert.ToString(dataReader["Usr_province"]);
+                        usersalumini.Usr_dateregistr = Convert.ToDateTime(dataReader["Usr_dateregistr"]);
+                        usersalumini.Usr_email = Convert.ToString(dataReader["Usr_email"]);
+                    }
+                }
+
+                connection.Close();
+            }
+            return View(usersalumini);
+        }
+
+        [HttpPost]
+        public IActionResult Update(UsersAlumini usersalumini, int id)
+        {
+            string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string sql = $"Update AlumniDb SET Usr_doc='{usersalumini.Usr_doc}', Usr_kind_doc='{usersalumini.Usr_kind_doc}', Usr_name='{usersalumini.Usr_name}', Usr_phonenum='{usersalumini.Usr_phonenum}', Usr_gender='{usersalumini.Usr_gender}', Usr_category='{usersalumini.Usr_category}', Usr_program='{usersalumini.Usr_program}', Usr_startdate='{usersalumini.Usr_startdate}', Usr_address='{usersalumini.Usr_address}', Usr_neighborhood='{usersalumini.Usr_neighborhood}', Usr_city='{usersalumini.Usr_city}', Usr_province='{usersalumini.Usr_province}', Usr_dateregistr='{usersalumini.Usr_dateregistr}', Usr_email='{usersalumini.Usr_email}' Where Usr_id='{id}'";
+
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }
